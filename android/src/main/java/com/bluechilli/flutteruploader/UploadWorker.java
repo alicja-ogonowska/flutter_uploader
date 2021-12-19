@@ -378,7 +378,7 @@ public class UploadWorker extends ListenableWorker implements CountProgressListe
 
       return okHttpClient;
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      Log.e(TAG, "exception encountered", e);
     }
   }
 
