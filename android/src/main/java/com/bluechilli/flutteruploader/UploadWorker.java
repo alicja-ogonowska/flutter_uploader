@@ -335,7 +335,7 @@ public class UploadWorker extends ListenableWorker implements CountProgressListe
     }
   }
 
-  private static OkHttpClient getUnsafeOkHttpClient(int timeout) {
+  private static OkHttpClient getUnsafeOkHttpClient(int timeout) throws Exception {
 
       // Create a trust manager that does not validate certificate chains
       final TrustManager[] trustAllCerts = new TrustManager[] {
@@ -356,7 +356,7 @@ public class UploadWorker extends ListenableWorker implements CountProgressListe
       };
 
       // Install the all-trusting trust manager
-      final SSLContext sslContext = SSLContext.getInstance("SSL");
+      final SSLContext sslContext = SSLContext.getInstance("TLS");
       sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
       // Create an ssl socket factory with our all-trusting manager
       final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
