@@ -336,7 +336,7 @@ public class UploadWorker extends ListenableWorker implements CountProgressListe
   }
 
   private static OkHttpClient getUnsafeOkHttpClient(int timeout) {
-    try {
+
       // Create a trust manager that does not validate certificate chains
       final TrustManager[] trustAllCerts = new TrustManager[] {
               new X509TrustManager() {
@@ -377,9 +377,6 @@ public class UploadWorker extends ListenableWorker implements CountProgressListe
               .build();
 
       return okHttpClient;
-    } catch (Exception e) {
-      Log.e(TAG, "exception encountered", e);
-    }
   }
 
   private File writeResponseToTemporaryFile(Context context, String body) {
